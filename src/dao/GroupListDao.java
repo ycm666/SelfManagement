@@ -31,7 +31,7 @@ public class GroupListDao {
 	public List<GroupListVo> selectList(int m_index) {
 
 		List<GroupListVo> list = new ArrayList<GroupListVo>();
-		String sql = "select * from group_list where m_index=?";
+		String sql = "select * from group_list g inner join category c on g.c_index=c.c_index  where m_index=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -59,6 +59,7 @@ public class GroupListDao {
 				vo.setG_subject(rs.getString("g_subject"));
 				vo.setM_index(rs.getInt("m_index"));
 				vo.setC_index(rs.getInt("c_index"));
+				vo.setC_name(rs.getString("c_name"));
 				
 				//ArrayList√ﬂ∞°
 				list.add(vo);

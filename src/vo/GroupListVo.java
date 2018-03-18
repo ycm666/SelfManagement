@@ -3,6 +3,7 @@ package vo;
 public class GroupListVo {
 	int g_index;
 	String g_subject;
+	String c_name;
 	int m_index;
 	int c_index;
 	
@@ -18,6 +19,17 @@ public class GroupListVo {
 		this.c_index = c_index;
 	}
 
+
+	
+
+	public String getC_name() {
+		return c_name;
+	}
+
+
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
 
 
 	public int getG_index() {
