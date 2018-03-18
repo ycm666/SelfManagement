@@ -2,6 +2,7 @@ package action.daily;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,11 +49,12 @@ public class DailyInsertAction extends HttpServlet {
 		
 		
 		//파라메터 받기
-		String d_subject = mr.getParameter("d_subject");
-		String d_content = mr.getParameter("d_content");
+		String d_subject =  URLDecoder.decode(mr.getParameter("d_subject"),"utf-8");
+		String d_content =  URLDecoder.decode(mr.getParameter("d_content"),"utf-8");
 		int g_index = Integer.parseInt(mr.getParameter("g_index"));
 		
-		
+		//System.out.println("d_subject:" + d_subject);
+		//System.out.println("d_content:" + d_content);
 		
 		//포장
 		DailyVo vo = new DailyVo(d_subject, d_content, d_image, g_index);
