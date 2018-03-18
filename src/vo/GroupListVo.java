@@ -1,6 +1,8 @@
 package vo;
 
-public class GroupListVo {
+import org.json.simple.JSONAware;
+
+public class GroupListVo implements JSONAware{
 	int g_index;
 	String g_subject;
 	String c_name;
@@ -55,6 +57,15 @@ public class GroupListVo {
 	}
 	public void setC_index(int c_index) {
 		this.c_index = c_index;
+	}
+
+
+	@Override
+	public String toJSONString() {
+		// TODO Auto-generated method stub
+		String json_str = String.format("{'g_index':%d,'g_subject':'%s','c_index':%d,'c_name':'%s','m_index':%d}",
+				                                   g_index,g_subject, c_index,c_name,m_index);
+		return json_str;
 	}
 	
 	

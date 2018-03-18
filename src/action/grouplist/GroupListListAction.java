@@ -34,11 +34,13 @@ public class GroupListListAction extends HttpServlet {
 		List<GroupListVo> list = GroupListDao.getInstance().selectList(m_index);
 		
 		String json_array = JSONArray.toJSONString(list);
-		JSONObject json = new JSONObject();
-		json.put("data", json_array);
+		/*JSONObject json = new JSONObject();
+		json.put("data", json_array);*/
+		
+		String send_str = String.format("{'data':%s}", json_array);
 		
 		response.setContentType("text/plain; charset=utf-8");
-		response.getWriter().print(json.toJSONString());
+		response.getWriter().print(send_str);
 		
 
 	}
