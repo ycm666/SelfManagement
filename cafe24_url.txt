@@ -17,5 +17,5 @@ http://ycm111.cafe24.com/grouplist/insert.do
 http://ycm111.cafe24.com/daily/insert.do
  parameter : d_subject
              d_content
-             d_photo <=ÀÌ¹ÌÁö
+             d_photo <=Image File
              g_index 
