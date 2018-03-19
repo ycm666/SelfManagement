@@ -35,11 +35,13 @@ public class DailyListAction extends HttpServlet {
 		List<DailyVo> list = DailyDao.getInstance().selectList(g_index);
 		
 		String json_array = JSONArray.toJSONString(list);
-		JSONObject json = new JSONObject();
-		json.put("data", json_array);
+		/*JSONObject json = new JSONObject();
+		json.put("data", json_array);*/
+		
+		String send_str = String.format("{'data':%s}", json_array);
 		
 		response.setContentType("text/plain; charset=utf-8");
-		response.getWriter().print(json.toJSONString());
+		response.getWriter().print(send_str);
 
 	}
 
