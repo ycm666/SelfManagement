@@ -58,8 +58,10 @@ public class DailyDao {
 				vo.setD_index(rs.getInt("d_index"));
 				vo.setD_subject(rs.getString("d_subject"));
 				vo.setD_content(rs.getString("d_content"));
+				vo.setD_date(rs.getString("d_date"));
 				vo.setD_image(rs.getString("d_image"));
 				vo.setG_index(rs.getInt("g_index"));
+				
 				//ArrayList√ﬂ∞°
 				list.add(vo);
 			}

@@ -1,6 +1,8 @@
 package vo;
 
-public class DailyVo {
+import org.json.simple.JSONAware;
+
+public class DailyVo implements JSONAware {
 	int d_index;
 	String d_subject;
 	String d_content;
@@ -59,6 +61,18 @@ public class DailyVo {
 	}
 	public void setG_index(int g_index) {
 		this.g_index = g_index;
+	}
+
+
+	
+	
+	@Override
+	public String toJSONString() {
+		// TODO Auto-generated method stub
+		String json_str = String.format("{'d_index':%d,'g_index':%d,'d_subject':'%s','d_content':'%s','d_date':'%s','d_image':'%s'}",
+				                         d_index,g_index,d_subject,d_content,d_date,d_image  
+				);
+		return json_str;
 	}
 	
 	
