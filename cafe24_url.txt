@@ -12,7 +12,11 @@ http://ycm111.cafe24.com/grouplist/insert.do
                g_subject
 
 
-
+[위치검색]
+http://ycm111.cafe24.com/geo/search_list.do
+                   latitude=
+                   longitude=
+                   search=운동
 
 http://ycm111.cafe24.com/daily/insert.do
  parameter : d_subject
