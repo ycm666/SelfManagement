@@ -47,7 +47,7 @@ public class DaumCoordToAddress {
 			JSONObject jsonObj2 = (JSONObject) jsonArray.get(0);
 			JSONObject jsonObj3 = (JSONObject) jsonObj2.get("address");
 			address = (String) jsonObj3.get("address_name");
-			System.out.println(address);
+			//System.out.println(address);
 			
 			
 		} catch (Exception e) {

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+var latitude,longitude;
+
+function getLocation() {
+	  if (navigator.geolocation) { // GPS를 지원하면
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      console.log(position.coords.latitude + ' ' + position.coords.longitude);
+	      //자신의 위치
+	      latitude = position.coords.latitude;
+	      longitude = position.coords.longitude;
+	      
+	    }, function(error) {
+	      console.error(error);
+	    }, {
+	      enableHighAccuracy: false,
+	      maximumAge: 0,
+	      timeout: Infinity
+	    });
+	  } else {
+	    alert('GPS를 지원하지 않습니다');
+	  }
+}
+
+//초기화 이벤트에서 자신의 위치를 구한다
+window.onload=function(){
+
+	getLocation();
+};
+
+function find(){
+	var search  = $('#search').val();
+	if(search==''){
+		alert('검색어를 입력하세요!!!');
+		return;
+	}
+	
+	
+	
+	//var lat = 37.4827936; 
+	//var lon = 126.8963743; 	
+	
+	var url = 'search.do';//SearchListAction
+	var param={ 
+	            'latitude':latitude,
+	            'longitude':longitude,
+	            'search': search
+	           };
+	$.ajax({
+		url:url,
+		data:param,
+		success:function(data){
+			$('#disp').html(data);
+		}
+	});
+	
+}
+
+</script>
+
+</head>
+<body>
+검색내용:<input id="search">
+         <input type="button" value="검색" onclick="find();">
+<hr>
+<div id="disp"></div>         
+         
+</body>
+</html>
