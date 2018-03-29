@@ -9,8 +9,14 @@
   <head>
       <meta charset="UTF-8">
       <title>네이버 지도 API - 주소로 지도 표시하기</title>
-      <script type="text/javascript" 
+      <!-- http://localhost용 -->
+      <script type="text/javascript"
               src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=B6P5_6lUk9ZoZlmT93CT&submodules=geocoder"></script>
+      <!-- http://ycm111.cafe24.com 용 -->
+      <!-- <script type="text/javascript" 
+              src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=yNHGGIyEBIbCC01L0vm2&submodules=geocoder"></script> -->        
+              
+              
   </head>
   <body>
     <div id="map" style="width:100%;height:700px;"></div>
