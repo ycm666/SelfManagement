@@ -26,13 +26,19 @@ public class SearchListAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-        //search.do?latitude=37.483782&longitude=126.9003409&search=약국
-		request.setCharacterEncoding("utf-8");
+		// 은행동 두산아파트 : 37.483486,126.7775602
+		// 명학역: 37.3843279,126.9356597
+		double latitude = 37.3843279;
+		double longitude= 126.9356597;
+		
+		//search.do?latitude=37.483782&longitude=126.9003409&search=약국
 		String str_latitude = request.getParameter("latitude");
 		String str_longitude= request.getParameter("longitude");
 		//문자열=>double형으로 변환
-		double latitude = Double.parseDouble(str_latitude);
-		double longitude= Double.parseDouble(str_longitude);
+		if(str_latitude!=null)
+		   latitude = Double.parseDouble(str_latitude);
+		if(str_longitude!=null)
+		   longitude= Double.parseDouble(str_longitude);
 		
 		String search = request.getParameter("search");
 		int range = 500;// 반경 1000m내
