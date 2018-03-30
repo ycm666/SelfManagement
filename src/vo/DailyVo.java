@@ -16,6 +16,14 @@ public class DailyVo implements JSONAware {
 	}
 	
 	
+	public DailyVo(int d_index, String d_subject, String d_content) {
+		super();
+		this.d_index = d_index;
+		this.d_subject = d_subject;
+		this.d_content = d_content;
+	}
+
+
 	public DailyVo(String d_subject, String d_content, String d_image, int g_index) {
 		super();
 		this.d_subject = d_subject;
