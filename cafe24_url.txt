@@ -11,15 +11,21 @@ http://ycm111.cafe24.com/grouplist/insert.do
                c_index
                g_subject
 
+[Daily]
+http://ycm111.cafe24.com/daily/insert.do
+ parameter : d_subject
+             d_content
+             d_photo <=Image File
+             g_index 
+             
+http://ycm111.cafe24.com/daily/insert.do  
+             d_index 
+
 
 [위치검색]
 http://ycm111.cafe24.com/geo/search_list.do
                    latitude=
                    longitude=
                    search=운동
-
-http://ycm111.cafe24.com/daily/insert.do
- parameter : d_subject
-             d_content
-             d_photo <=Image File
-             g_index 
+           
+             
