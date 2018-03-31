@@ -228,7 +228,7 @@ public class DailyDao {
 		int res = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "update daily set d_subject=?,d_content=?,d_data=now() where d_index=?";
+		String sql = "update daily set d_subject=?,d_content=?,d_date=now() where d_index=?";
 
 		try {
 			//1.Connection¾ò±â
