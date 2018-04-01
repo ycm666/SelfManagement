@@ -37,7 +37,7 @@ public class DailyDeleteAction extends HttpServlet {
 		
 		String save_dir = request.getServletContext().getRealPath("/upload/");
 		//첨부화일이 있으면 화일삭제
-		if(vo.getD_image().equals("no_file")) {
+		if(!vo.getD_image().equals("no_file")) {
 			File f = new File(save_dir,vo.getD_image());
 			f.delete();
 		}

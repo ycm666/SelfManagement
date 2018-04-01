@@ -39,17 +39,19 @@ public class GroupListDeleteAction extends HttpServlet {
 		
 		String save_dir = request.getServletContext().getRealPath("/upload/");
 		int res = 0;
+		int count = 0;
 		for(DailyVo vo : daily_list) {
 			//첨부화일이 있으면 화일삭제
-			if(vo.getD_image().equals("no_file")) {
+			if(!vo.getD_image().equals("no_file")) {
 				File f = new File(save_dir,vo.getD_image());
 				f.delete();
 			}
 			//DB삭제
-			res = res *  DailyDao.getInstance().delete(vo.getD_index());
+			res =  DailyDao.getInstance().delete(vo.getD_index());
+			count++;
 		}
 		
-		res = res * GroupListDao.getInstance().delete(g_index);
+		res =  count + GroupListDao.getInstance().delete(g_index);
 		
 		
 		//성공여부
