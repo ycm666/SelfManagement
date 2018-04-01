@@ -28,10 +28,20 @@ public class GroupListListAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int c_index = 0;
+		String str_c_index = request.getParameter("c_index");
+		if(str_c_index != null &&  !str_c_index.equals(""))
+			c_index = Integer.parseInt(str_c_index);
 		
 		int m_index = Integer.parseInt(request.getParameter("m_index"));
 		
-		List<GroupListVo> list = GroupListDao.getInstance().selectList(m_index);
+		List<GroupListVo> list = null;
+		
+		if(c_index==0)
+		   list = GroupListDao.getInstance().selectList(m_index);
+		else
+			list = GroupListDao.getInstance().selectList(m_index,c_index);
+		
 		
 		String json_array = JSONArray.toJSONString(list);
 		/*JSONObject json = new JSONObject();

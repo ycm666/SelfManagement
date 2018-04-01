@@ -86,6 +86,63 @@ public class GroupListDao {
 		return list;
 	}
 	
+	public List<GroupListVo> selectList(int m_index,int c_index) {
+
+		List<GroupListVo> list = new ArrayList<GroupListVo>();
+		String sql = "select * from group_list g inner join category c on g.c_index=c.c_index  where m_index=? and g.c_index=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+			//2.명령처리객체 얻어오기
+			pstmt = conn.prepareStatement(sql);
+			
+			//2-1.pstmt setting
+			pstmt.setInt(1, m_index);
+			pstmt.setInt(2, c_index);
+			//3.결과행처리객체 얻어오기
+			rs = pstmt.executeQuery();
+			//처음~끝까지 반복해라..
+			while (rs.next()) {
+				//1개의 레코드를 저장할 객체
+				GroupListVo vo = new GroupListVo();
+
+				//현재레코드(rs)의 필드값을 얻어와서->VO에 넣는다
+				//vo에 넣기
+				vo.setG_index(rs.getInt("g_index"));
+				vo.setG_subject(rs.getString("g_subject"));
+				vo.setM_index(rs.getInt("m_index"));
+				vo.setC_index(rs.getInt("c_index"));
+				vo.setC_name(rs.getString("c_name"));
+				
+				//ArrayList추가
+				list.add(vo);
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+
+			try {
+				//열린 역순으로 닫기
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	
 	public int insert(GroupListVo vo) {
 		// TODO Auto-generated method stub
@@ -160,4 +217,6 @@ public class GroupListDao {
 		}
 		return res;
 	}
+
+	
 }
