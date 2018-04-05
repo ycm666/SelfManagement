@@ -29,13 +29,13 @@ public class PurposeListAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		// /purpose/list.do?m_index=12
 		
-		//ì™¸ë¶€ë¡œ ë°›ì•„ì˜¬ë–„ëŠ” ë¬´ì¡°ê±´ String í˜•íƒœë¡œ ì²˜ìŒì—ëŠ” ë°›ì•„ì˜´
+		//¿ÜºÎ·Î ¹Ş¾Æ¿Ã‹š´Â ¹«Á¶°Ç String ÇüÅÂ·Î Ã³À½¿¡´Â ¹Ş¾Æ¿È
 		String str_m_index = request.getParameter("m_index");
 		int m_index = Integer.parseInt(str_m_index);
 		PurposeDao dao = PurposeDao.getInstance();
 		List<PurposeVo> list = dao.selectList(m_index);
 		
-		//ArrayList => JSONArrayë³€í™˜
+		//ArrayList => JSONArrayº¯È¯
 		String json_array = JSONArray.toJSONString(list);
 
 		String send_str = String.format("{'data':%s}", json_array);

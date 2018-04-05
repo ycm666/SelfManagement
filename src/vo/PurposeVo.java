@@ -34,7 +34,7 @@ public class PurposeVo implements JSONAware{
 	@Override
 	public String toJSONString() {
 		// TODO Auto-generated method stub
-		String json_str = String.format("{'p_index':%d,'p_content':'%s','p_subject':'%s','p_unit:'%s','p_goal':%d,'p_date','%s','m_index':%d,'p_now':'%s'}", p_index,p_content,p_subject,p_unit,p_goal,p_date,m_index,p_now);
+		String json_str = String.format("{'p_index':%d,'p_content':'%s','p_subject':'%s','p_unit:'%s','p_goal':%d,'p_date','%s','m_index':%d,'p_now':%d}", p_index,p_content,p_subject,p_unit,p_goal,p_date,m_index,p_now);
 		return json_str;
 	}
 	

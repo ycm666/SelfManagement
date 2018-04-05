@@ -1,21 +1,16 @@
 package action.purpose;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import dao.DailyDao;
 import dao.PurposeDao;
-import vo.DailyVo;
 import vo.PurposeVo;
 
 /**
@@ -35,27 +30,27 @@ public class PurposeInsertAction extends HttpServlet {
 		
 		//p_subject,p_content,p_unit,p_goal,p_date,m_index
 		
-		//ì™¸ë¶€ë¡œ ë°›ì•„ì˜¬ë–„ëŠ” ë¬´ì¡°ê±´ String í˜•íƒœë¡œ ì²˜ìŒì—ëŠ” ë°›ì•„ì˜´
+		//¿ÜºÎ·Î ¹Ş¾Æ¿Ã‹š´Â ¹«Á¶°Ç String ÇüÅÂ·Î Ã³À½¿¡´Â ¹Ş¾Æ¿È
 				String p_subject = request.getParameter("p_subject");
 				String p_content = request.getParameter("p_content");
 				String p_unit = request.getParameter("p_unit");
 				String str_p_goal = request.getParameter("p_goal");
-				int p_goal = Integer.getInteger("str_p_goal");
+				int p_goal = Integer.parseInt(str_p_goal);
 				String str_m_index = request.getParameter("m_index");
-				int m_index = Integer.getInteger("str_m_index");
+				int m_index = Integer.parseInt(str_m_index);
 				
-				//í¬ì¥
+				//Æ÷Àå
 				PurposeVo vo = new PurposeVo(p_subject, p_content, p_unit,p_goal, m_index);
 				
 				int res = PurposeDao.getInstance().insert(vo);
 					
 				
-				//ì„±ê³µì—¬ë¶€
+				//¼º°ø¿©ºÎ
 				boolean bSuccess = true;
 				
 				if(res==0) bSuccess = false;
 				
-				//ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
+				//°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
 				JSONObject json = new JSONObject();
 				json.put("success", bSuccess);
 				response.setContentType("text/plain; charset=utf-8");
