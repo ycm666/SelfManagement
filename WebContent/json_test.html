@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+//      { key:value  , key:value }  <= JSON(Javascript Object Notation)
+var p = {'name':'홍길동','age':20};
+
+document.write("이름:" + p.name + "<br>" );
+
+var sido_array = ['서울','경기','인천'];
+
+for(var i=0;i<sido_array.length;i++)
+	document.write( sido_array[i] + "<br>" );
+
+
+var p_array = [
+	{'name':'홍길동1','age':21},
+	{'name':'홍길동2','age':22},
+	{'name':'홍길동3','age':23}
+];
+
+for(var i=0;i<p_array.length;i++){
+	var pp = p_array[i];
+	document.write('이름:' + pp.name + "<br>");
+}
+
+
+
+
+</script>
+
+
+
+</head>
+<body>
+
+</body>
+</html>

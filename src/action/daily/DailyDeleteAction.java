@@ -2,7 +2,6 @@ package action.daily;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.DailyDao;
 import vo.DailyVo;
@@ -36,20 +32,20 @@ public class DailyDeleteAction extends HttpServlet {
 		DailyVo  vo = DailyDao.getInstance().selectOne(d_index);
 		
 		String save_dir = request.getServletContext().getRealPath("/upload/");
-		//Ã·ºÎÈ­ÀÏÀÌ ÀÖÀ¸¸é È­ÀÏ»èÁ¦
+		//ì²¨ë¶€í™”ì¼ì´ ìˆìœ¼ë©´ í™”ì¼ì‚­ì œ
 		if(!vo.getD_image().equals("no_file")) {
 			File f = new File(save_dir,vo.getD_image());
 			f.delete();
 		}
-		//DB»èÁ¦
+		//DBì‚­ì œ
 		int res = DailyDao.getInstance().delete(d_index);
 		
-		//¼º°ø¿©ºÎ
+		//ì„±ê³µì—¬ë¶€
 		boolean bSuccess = true;
 		
 		if(res==0) bSuccess = false;
 		
-		//È¸¿ø°¡ÀÔ°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
+		//íšŒì›ê°€ì…ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

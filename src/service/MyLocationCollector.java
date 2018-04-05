@@ -35,12 +35,12 @@ public class MyLocationCollector {
 			//category = URLEncoder.encode(category, "UTF8");
 			int scope = range;
 			int start = 1;
-			int display = 100; //À½½ÄÁ¡ 100°³ º¸¿©ÁÖ±â
+			int display = 100; //ìŒì‹ì  100ê°œ ë³´ì—¬ì£¼ê¸°
 
 			SAXBuilder sb = new SAXBuilder();
 
-			//Daum : GPSÁÂÇ¥->ÁÖ¼Ò¾ò±â
-			//String searchField="¼­¿ï½Ã ±¸·Î±¸ ±¸·Î3µ¿" + category;
+			//Daum : GPSì¢Œí‘œ->ì£¼ì†Œì–»ê¸°
+			//String searchField="ì„œìš¸ì‹œ êµ¬ë¡œêµ¬ êµ¬ë¡œ3ë™" + category;
 			String searchField = DaumCoordToAddress.getCoordToAddress(lat, lon) + category;
 			
 //Naver OpenAPI
@@ -62,11 +62,11 @@ public class MyLocationCollector {
 
 			URL url = new URL(urlStr);
 			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-			//¹ß±Ş¹ŞÀº ID
+			//ë°œê¸‰ë°›ì€ ID
 			connection.setRequestProperty("X-Naver-Client-Id", clientId); 
-			//¹ß±Ş¹ŞÀº PW
+			//ë°œê¸‰ë°›ì€ PW
 			connection.setRequestProperty("X-Naver-Client-Secret", clientSecret); 
-			// ¹ŞÀ»¿äÃ»Å¸ÀÔ
+			// ë°›ì„ìš”ì²­íƒ€ì…
 			connection.setRequestProperty("Content-Type", "application/xml"); 
 			connection.connect();
 			//URL url = new URL("http://openapi.naver.com/search?key=fa65213e0082bd7fc5b7f1cff89190e6&query=" + URLEncoder.encode(searchField, "utf-8") + "&target=local&start=2&display=100");
@@ -78,13 +78,13 @@ public class MyLocationCollector {
 			List itemList = channel.getChildren("item");
 			URL lonlatUrl = null;
 
-			//xml »ı¼º
-			//³×ÀÌ¹ö¿¡¼­ ³Ñ¾î¿Â ÁÂÇ¥°¡ ¸ÊÁÂÀÌ±â ¶§¹®¿¡ ¾ßÈÄ OpenAPI¿¡¼­ À§¼º(À§µµ/°æµµ)ÁÂÇ¥¸¦ ¾ò¾î¿Â´Ù(¸ÊÁÂÇ¥->À§¼ºÁÂÇ¥)
+			//xml ìƒì„±
+			//ë„¤ì´ë²„ì—ì„œ ë„˜ì–´ì˜¨ ì¢Œí‘œê°€ ë§µì¢Œì´ê¸° ë•Œë¬¸ì— ì•¼í›„ OpenAPIì—ì„œ ìœ„ì„±(ìœ„ë„/ê²½ë„)ì¢Œí‘œë¥¼ ì–»ì–´ì˜¨ë‹¤(ë§µì¢Œí‘œ->ìœ„ì„±ì¢Œí‘œ)
 			//root = new Element("root");
 
 			GeoConvert conv = new GeoConvert() ;
-			conv.SetSrcType(GeoConvert.kBessel1984, GeoConvert.kKatec);	// WGS ±¸±Û ÁÂÇ¥°è
-			conv.SetDstType(GeoConvert.kWgs84, GeoConvert.kGeographic);	// KTM ³×ÀÌ¹ö ÁÂÇ¥ (Ä«ÅØ)
+			conv.SetSrcType(GeoConvert.kBessel1984, GeoConvert.kKatec);	// WGS êµ¬ê¸€ ì¢Œí‘œê³„
+			conv.SetDstType(GeoConvert.kWgs84, GeoConvert.kGeographic);	// KTM ë„¤ì´ë²„ ì¢Œí‘œ (ì¹´í…)
 
 			for(Object obj : itemList) {
 
@@ -98,12 +98,12 @@ public class MyLocationCollector {
 				double mapx = Double.parseDouble(tmpItem.getChild("mapx").getText());
 				double mapy = Double.parseDouble(tmpItem.getChild("mapy").getText());
 				//System.out.printf("mapx=%f mapy=%f\n",longitude,latitude );
-				// MapÁÂÇ¥->GPSÁÂÇ¥ º¯È¯
+				// Mapì¢Œí‘œ->GPSì¢Œí‘œ ë³€í™˜
 				//ReturnValueDouble d =  conv.Conv(mapx, mapy);//, lon, lat);
 				GeoCoord gpsCoord = conv.Conv(mapx, mapy);
 				
 				//System.out.printf("longitude=%f latitude=%f\n",d.x,d.y );
-                //                                       ³»À§Ä¡   ¾ÆÀÌÅÛÀ§Ä¡
+                //                                       ë‚´ìœ„ì¹˜   ì•„ì´í…œìœ„ì¹˜
 				int distance = (int)Math.round(MyCoord.distance(lat, lon, gpsCoord.latitude, gpsCoord.longitude)*1000);
 
 				//Log.d("me", distance+":"+name);
@@ -123,7 +123,7 @@ public class MyLocationCollector {
 				}
 			}
 
-			//Distance SortÃ³¸®
+			//Distance Sortì²˜ë¦¬
 			LocationItem [] items = new LocationItem[list.size()];
 			list.toArray(items);
 			//sort

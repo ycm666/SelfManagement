@@ -32,7 +32,7 @@ public class DailyInsertAction extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		//È­ÀÏÀúÀå°æ·Î
+		//í™”ì¼ì €ì¥ê²½ë¡œ
 		String save_dir = request.getServletContext().getRealPath("/upload/");
 		int max_size = 1024*1024*100; // 100MB
 		MultipartRequest mr = new MultipartRequest(request, 
@@ -48,7 +48,7 @@ public class DailyInsertAction extends HttpServlet {
 		
 		
 		
-		//ÆÄ¶ó¸ŞÅÍ ¹Ş±â
+		//íŒŒë¼ë©”í„° ë°›ê¸°
 		String d_subject =  URLDecoder.decode(mr.getParameter("d_subject"),"utf-8");
 		String d_content =  URLDecoder.decode(mr.getParameter("d_content"),"utf-8");
 		int g_index = Integer.parseInt(mr.getParameter("g_index"));
@@ -56,17 +56,17 @@ public class DailyInsertAction extends HttpServlet {
 		//System.out.println("d_subject:" + d_subject);
 		//System.out.println("d_content:" + d_content);
 		
-		//Æ÷Àå
+		//í¬ì¥
 		DailyVo vo = new DailyVo(d_subject, d_content, d_image, g_index);
 		
 		int res = DailyDao.getInstance().insert(vo);
 		
-		//¼º°ø¿©ºÎ
+		//ì„±ê³µì—¬ë¶€
 		boolean bSuccess = true;
 		
 		if(res==0) bSuccess = false;
 		
-		//È¸¿ø°¡ÀÔ°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
+		//íšŒì›ê°€ì…ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

@@ -10,10 +10,10 @@ import javax.sql.DataSource;
 
 public class DBService {
 	
-	//JNDI±â¹ıÀ¸·Î »ı¼ºµÈ ÀÚ¿øÁ¤º¸ ¾ò±âÀ§ÇÑ °´Ã¼
+	//JNDIê¸°ë²•ìœ¼ë¡œ ìƒì„±ëœ ìì›ì •ë³´ ì–»ê¸°ìœ„í•œ ê°ì²´
 	DataSource ds;
-	//Single-ton pattern : 1°³ÀÇ °´Ã¼¸¸ 
-	//                     »ı¼ºÇØ¼­ ¼­ºñ½ºÇÏÀÚ
+	//Single-ton pattern : 1ê°œì˜ ê°ì²´ë§Œ 
+	//                     ìƒì„±í•´ì„œ ì„œë¹„ìŠ¤í•˜ì
 	static DBService single = null;
 
 	public static DBService getInstance() {
@@ -27,16 +27,16 @@ public class DBService {
 		// TODO Auto-generated constructor stub
 		
 		try {
-			//1.JNDIÀÚ¿øÀ» °ü¸®(È¹µæ)ÇÏ´Â °´Ã¼
+			//1.JNDIìì›ì„ ê´€ë¦¬(íšë“)í•˜ëŠ” ê°ì²´
 			InitialContext ic = new InitialContext();
 			
-			//2.ContextÁ¤º¸¸¦ È¹µæ(lookup)
+			//2.Contextì •ë³´ë¥¼ íšë“(lookup)
 			Context  ctx = (Context) ic.lookup("java:comp/env");
 			
-			//3.Context³»ÀÇ ÀÚ¿ø(DataSource)Á¤º¸¸¦ È¹µæ
+			//3.Contextë‚´ì˜ ìì›(DataSource)ì •ë³´ë¥¼ íšë“
 			ds = (DataSource) ctx.lookup("jdbc/ycm111");
 			
-			//cf)ÇÑ²¨¹ø¿¡ ÀÌ·¸°Ô ÇØµµ µÈ´Ù
+			//cf)í•œêº¼ë²ˆì— ì´ë ‡ê²Œ í•´ë„ ëœë‹¤
 			//ds = (DataSource) ic.lookup("java:comp/env/jdbc/oracle_test");
 			
 		} catch (NamingException e) {

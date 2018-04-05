@@ -11,9 +11,9 @@ CREATE table member
 
 --Sample
 INSERT INTO member(m_id,m_pwd,m_name,m_phone_num,m_gender,m_age) 
-       VALUES('hong','1111','È«±æµ¿','010-111-2222','³²ÀÚ',20);
+       VALUES('hong','1111','í™ê¸¸ë™','010-111-2222','ë‚¨ì',20);
 INSERT INTO member(m_id,m_pwd,m_name,m_phone_num,m_gender,m_age) 
-       VALUES('test','1111','Å×½ºÆ®','010-222-2222','³²ÀÚ',30);
+       VALUES('test','1111','í…ŒìŠ¤íŠ¸','010-222-2222','ë‚¨ì',30);
 
 
 create table category
@@ -22,11 +22,11 @@ create table category
 );
 
 --Sample
-insert into category(c_name) values('¿îµ¿');
-insert into category(c_name) values('´ÙÀÌ¾îÆ®');
-insert into category(c_name) values('ÇÁ·ÎÁ§Æ®');
-insert into category(c_name) values('±İ¿¬');
-insert into category(c_name) values('ÀÚ°İÁõ');
+insert into category(c_name) values('ìš´ë™');
+insert into category(c_name) values('ë‹¤ì´ì–´íŠ¸');
+insert into category(c_name) values('í”„ë¡œì íŠ¸');
+insert into category(c_name) values('ê¸ˆì—°');
+insert into category(c_name) values('ìê²©ì¦');
 
 
 
@@ -46,6 +46,28 @@ create table daily
   g_index int references group_list(g_index)
 );
 
+ ---------------------------------------------------
+create table purpose
+( p_index int primary key auto_increment,
+  p_subject varchar(50) not null,
+  p_content varchar(50) not null,
+  p_unit varchar(20) not null,
+  p_goal int not null,
+  p_date datetime,
+  m_index int references member(m_index)
+  );
+
+insert into purpose(p_subject,p_content,p_unit,p_goal,p_date,m_index)
+     values('ë…ì„œí•˜ê¸°','ì¼ì£¼ì¼1ê¶Œì½ê¸°','í˜ì´ì§€',1000,now(),12);
+
+select p.*,( select ifnull(sum(pp_value),0) from purpose_process pp where pp.p_index=p.p_index  ) p_now from purpose p where m_index=12;
+
+create table purpose_process
+(pp_index int primary key auto_increment,
+ pp_value int not null,
+ pp_date datetime,
+ p_index int references purpose(p_index)
+ ); 
 
 
 */
