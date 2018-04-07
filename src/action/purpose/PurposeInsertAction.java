@@ -30,7 +30,7 @@ public class PurposeInsertAction extends HttpServlet {
 		
 		//p_subject,p_content,p_unit,p_goal,p_date,m_index
 		
-		//¿ÜºÎ·Î ¹Ş¾Æ¿Ã‹š´Â ¹«Á¶°Ç String ÇüÅÂ·Î Ã³À½¿¡´Â ¹Ş¾Æ¿È
+		//ì™¸ë¶€ë¡œ ë°›ì•„ì˜¬ë–„ëŠ” ë¬´ì¡°ê±´ String í˜•íƒœë¡œ ì²˜ìŒì—ëŠ” ë°›ì•„ì˜´
 				String p_subject = request.getParameter("p_subject");
 				String p_content = request.getParameter("p_content");
 				String p_unit = request.getParameter("p_unit");
@@ -39,18 +39,18 @@ public class PurposeInsertAction extends HttpServlet {
 				String str_m_index = request.getParameter("m_index");
 				int m_index = Integer.parseInt(str_m_index);
 				
-				//Æ÷Àå
+				//í¬ì¥
 				PurposeVo vo = new PurposeVo(p_subject, p_content, p_unit,p_goal, m_index);
 				
 				int res = PurposeDao.getInstance().insert(vo);
 					
 				
-				//¼º°ø¿©ºÎ
+				//ì„±ê³µì—¬ë¶€
 				boolean bSuccess = true;
 				
 				if(res==0) bSuccess = false;
 				
-				//°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
+				//ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
 				JSONObject json = new JSONObject();
 				json.put("success", bSuccess);
 				response.setContentType("text/plain; charset=utf-8");

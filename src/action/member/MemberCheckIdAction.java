@@ -35,12 +35,12 @@ public class MemberCheckIdAction extends HttpServlet {
 		
 		vo = MemberDao.getInstance().selectOne(id);
 		
-		//¼º°ø¿©ºÎ
+		//ì„±ê³µì—¬ë¶€
 		boolean bSuccess = true;
 		
 		if(vo!=null) bSuccess = false;
 		
-		//È¸¿ø°¡ÀÔ°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
+		//íšŒì›ê°€ì…ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

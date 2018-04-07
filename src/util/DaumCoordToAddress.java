@@ -26,7 +26,7 @@ public class DaumCoordToAddress {
 
 			URL url = new URL(urlStr);
 			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-			//πﬂ±ﬁπﬁ¿∫ key
+			//Î∞úÍ∏âÎ∞õÏùÄ key
 			connection.setRequestProperty("Authorization", kakaoAK); 
 			connection.setRequestProperty("Content-Type", "application/plain"); 
 			connection.connect();

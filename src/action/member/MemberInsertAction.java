@@ -29,7 +29,7 @@ public class MemberInsertAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		//ÆÄ¶ó¸ŞÅÍ ¹Ş±â
+		//íŒŒë¼ë©”í„° ë°›ê¸°
 		String m_id 		= request.getParameter("m_id");
 		String m_pwd 		= request.getParameter("m_pwd");
 		String m_name 		= request.getParameter("m_name");
@@ -41,12 +41,12 @@ public class MemberInsertAction extends HttpServlet {
 		
 		int res = MemberDao.getInstance().insert(vo);
 		
-		//°¡ÀÔ ¼º°ø¿©ºÎ
+		//ê°€ì… ì„±ê³µì—¬ë¶€
 		boolean bSuccess = true;
 		
 		if(res==0) bSuccess = false;
 		
-		//È¸¿ø°¡ÀÔ°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
+		//íšŒì›ê°€ì…ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

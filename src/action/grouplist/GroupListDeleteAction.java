@@ -41,12 +41,12 @@ public class GroupListDeleteAction extends HttpServlet {
 		int res = 0;
 		int count = 0;
 		for(DailyVo vo : daily_list) {
-			//Ã·ºÎÈ­ÀÏÀÌ ÀÖÀ¸¸é È­ÀÏ»èÁ¦
+			//ì²¨ë¶€í™”ì¼ì´ ìˆìœ¼ë©´ í™”ì¼ì‚­ì œ
 			if(!vo.getD_image().equals("no_file")) {
 				File f = new File(save_dir,vo.getD_image());
 				f.delete();
 			}
-			//DB»èÁ¦
+			//DBì‚­ì œ
 			res =  DailyDao.getInstance().delete(vo.getD_index());
 			count++;
 		}
@@ -54,12 +54,12 @@ public class GroupListDeleteAction extends HttpServlet {
 		res =  count + GroupListDao.getInstance().delete(g_index);
 		
 		
-		//¼º°ø¿©ºÎ
+		//ì„±ê³µì—¬ë¶€
 		boolean bSuccess = true;
 		
 		if(res==0) bSuccess = false;
 		
-		//È¸¿ø°¡ÀÔ°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
+		//íšŒì›ê°€ì…ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

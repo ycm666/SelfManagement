@@ -32,7 +32,7 @@ public class DailyModifyAction extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		//ÆÄ¶ó¸ŞÅÍ ¹Ş±â
+		//íŒŒë¼ë©”í„° ë°›ê¸°
 		String d_subject = request.getParameter("d_subject");
 		String d_content =  request.getParameter("d_content");
 		int d_index = Integer.parseInt(request.getParameter("d_index"));
@@ -41,17 +41,17 @@ public class DailyModifyAction extends HttpServlet {
 		//System.out.println("d_subject:" + d_subject);
 		//System.out.println("d_content:" + d_content);
 		
-		//Æ÷Àå
+		//í¬ì¥
 		DailyVo vo = new DailyVo(d_index,d_subject, d_content);
 		
 		int res = DailyDao.getInstance().update(vo);
 		
-		//¼º°ø¿©ºÎ
+		//ì„±ê³µì—¬ë¶€
 		boolean bSuccess = true;
 		
 		if(res==0) bSuccess = false;
 		
-		//È¸¿ø°¡ÀÔ°á°ú¸¦ : {'success': true} Çü½ÄÀ¸·Î Àü¼Û
+		//íšŒì›ê°€ì…ê²°ê³¼ë¥¼ : {'success': true} í˜•ì‹ìœ¼ë¡œ ì „ì†¡
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

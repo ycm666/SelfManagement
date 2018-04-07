@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public class MyCoord {
 
-	//2°³ÀÇ À§µµ/°æµµÀ» ÀÌ¿ëÇØ¼­ °Å¸® ±¸ÇÏ±â
+	//2ê°œì˜ ìœ„ë„/ê²½ë„ì„ ì´ìš©í•´ì„œ ê±°ë¦¬ êµ¬í•˜ê¸°
 	public static double distance(
 			double lat1,double lon1,
 			double lat2,double lon2)
@@ -23,10 +23,10 @@ public class MyCoord {
 		return  6376.5* c;
 	}
 		
-	//±âÁØÀ§Ä¡¿¡¼­ °Å¸®°¡ len¸¸Å­¶³¾îÁö°í °¢µµ°¡ degreeÀÎ À§Ä¡±¸ÇÏ±â
+	//ê¸°ì¤€ìœ„ì¹˜ì—ì„œ ê±°ë¦¬ê°€ lenë§Œí¼ë–¨ì–´ì§€ê³  ê°ë„ê°€ degreeì¸ ìœ„ì¹˜êµ¬í•˜ê¸°
 	public static Point getPosition(
 			Point cpt,int len,int degree){
-		//°è»êµÈ À§Ä¡
+		//ê³„ì‚°ëœ ìœ„ì¹˜
 		Point pt=new Point();
 		double radian = Math.PI/180.0;
 
@@ -36,7 +36,7 @@ public class MyCoord {
 		return pt;
 	}
 
-	// µÎ ÁöÁ¡(À§µµ/°æµµ)ÀÇ À§Ä¡¿¡ µû¸¥ °¢µµ ±¸ÇÏ±â (Radian)(¹æÀ§°¢ °íÁ¤ ÇÊ¿ä)
+	// ë‘ ì§€ì (ìœ„ë„/ê²½ë„)ì˜ ìœ„ì¹˜ì— ë”°ë¥¸ ê°ë„ êµ¬í•˜ê¸° (Radian)(ë°©ìœ„ê° ê³ ì • í•„ìš”)
 	public static double radianFromCoordinate(double lat1,double lon1,
 											  double lat2,double lon2)
 	{

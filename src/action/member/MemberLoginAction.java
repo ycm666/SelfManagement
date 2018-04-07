@@ -2,14 +2,11 @@ package action.member;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.simple.JSONObject;
 
 import dao.MemberDao;
 import vo.MemberVo;
@@ -35,7 +32,7 @@ public class MemberLoginAction extends HttpServlet {
         if(vo==null)
         	vo = new MemberVo();
         
-        //»ç¿ëÀÚ Á¤º¸¸¦ JSON µ¥ÀÌÅÍ·Î Àü¼Û
+        //ì‚¬ìš©ì ì •ë³´ë¥¼ JSON ë°ì´í„°ë¡œ ì „ì†¡
         response.setContentType("text/plain; charset=utf-8");
         response.getWriter().print(vo.toJSONString());
         

@@ -12,8 +12,8 @@ import vo.DailyVo;
 
 public class DailyDao {
 
-	//Single-ton pattern : 1°³ÀÇ °´Ã¼¸¸ 
-	//                     »ı¼ºÇØ¼­ ¼­ºñ½ºÇÏÀÚ
+	//Single-ton pattern : 1ê°œì˜ ê°ì²´ë§Œ 
+	//                     ìƒì„±í•´ì„œ ì„œë¹„ìŠ¤í•˜ì
 	static DailyDao single = null;
 
 	public static DailyDao getInstance() {
@@ -38,23 +38,23 @@ public class DailyDao {
 		ResultSet rs = null;
 
 		try {
-			//1.Connection ¾ò¾î¿À±â
+			//1.Connection ì–»ì–´ì˜¤ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			pstmt = conn.prepareStatement(sql);
 
 			//2-1.pstmt setting
 			pstmt.setInt(1, g_index);
 			     
-			//3.°á°úÇàÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//3.ê²°ê³¼í–‰ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			rs = pstmt.executeQuery();
-			//Ã³À½~³¡±îÁö ¹İº¹ÇØ¶ó..
+			//ì²˜ìŒ~ëê¹Œì§€ ë°˜ë³µí•´ë¼..
 			while (rs.next()) {
-				//1°³ÀÇ ·¹ÄÚµå¸¦ ÀúÀåÇÒ °´Ã¼
+				//1ê°œì˜ ë ˆì½”ë“œë¥¼ ì €ì¥í•  ê°ì²´
 				DailyVo vo = new DailyVo();
 
-				//ÇöÀç·¹ÄÚµå(rs)ÀÇ ÇÊµå°ªÀ» ¾ò¾î¿Í¼­->VO¿¡ ³Ö´Â´Ù
-				//vo¿¡ ³Ö±â
+				//í˜„ì¬ë ˆì½”ë“œ(rs)ì˜ í•„ë“œê°’ì„ ì–»ì–´ì™€ì„œ->VOì— ë„£ëŠ”ë‹¤
+				//voì— ë„£ê¸°
 				vo.setD_index(rs.getInt("d_index"));
 				vo.setD_subject(rs.getString("d_subject"));
 				vo.setD_content(rs.getString("d_content"));
@@ -62,7 +62,7 @@ public class DailyDao {
 				vo.setD_image(rs.getString("d_image"));
 				vo.setG_index(rs.getInt("g_index"));
 				
-				//ArrayListÃß°¡
+				//ArrayListì¶”ê°€
 				list.add(vo);
 			}
 
@@ -72,7 +72,7 @@ public class DailyDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
@@ -96,17 +96,17 @@ public class DailyDao {
 		String sql = "insert into daily(d_subject,d_content,d_image,d_date,g_index) values(?,?,?,now(),?)";
 
 		try {
-			//1.Connection¾ò±â
+			//1.Connectionì–»ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ê¸°
 			pstmt = conn.prepareStatement(sql);
-			//3.pstmtÀÇ parameter setting
+			//3.pstmtì˜ parameter setting
 			pstmt.setString(1, vo.getD_subject());
 			pstmt.setString(2, vo.getD_content());
 			pstmt.setString(3, vo.getD_image());
 			pstmt.setInt(4, vo.getG_index());
 
-			//4.DB Àü¼Û			
+			//4.DB ì „ì†¡			
 			res = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -115,7 +115,7 @@ public class DailyDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)
@@ -139,23 +139,23 @@ public class DailyDao {
 		ResultSet rs = null;
 
 		try {
-			//1.Connection ¾ò¾î¿À±â
+			//1.Connection ì–»ì–´ì˜¤ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			pstmt = conn.prepareStatement(sql);
 
 			//2-1.pstmt setting
 			pstmt.setInt(1, d_index);
 			     
-			//3.°á°úÇàÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//3.ê²°ê³¼í–‰ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			rs = pstmt.executeQuery();
-			//Ã³À½~³¡±îÁö ¹İº¹ÇØ¶ó..
+			//ì²˜ìŒ~ëê¹Œì§€ ë°˜ë³µí•´ë¼..
 			if (rs.next()) {
-				//1°³ÀÇ ·¹ÄÚµå¸¦ ÀúÀåÇÒ °´Ã¼
+				//1ê°œì˜ ë ˆì½”ë“œë¥¼ ì €ì¥í•  ê°ì²´
 				vo = new DailyVo();
 
-				//ÇöÀç·¹ÄÚµå(rs)ÀÇ ÇÊµå°ªÀ» ¾ò¾î¿Í¼­->VO¿¡ ³Ö´Â´Ù
-				//vo¿¡ ³Ö±â
+				//í˜„ì¬ë ˆì½”ë“œ(rs)ì˜ í•„ë“œê°’ì„ ì–»ì–´ì™€ì„œ->VOì— ë„£ëŠ”ë‹¤
+				//voì— ë„£ê¸°
 				vo.setD_index(rs.getInt("d_index"));
 				vo.setD_subject(rs.getString("d_subject"));
 				vo.setD_content(rs.getString("d_content"));
@@ -172,7 +172,7 @@ public class DailyDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
@@ -195,13 +195,13 @@ public class DailyDao {
 		String sql = "delete from daily where d_index=?";
 
 		try {
-			//1.Connection¾ò±â
+			//1.Connectionì–»ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ê¸°
 			pstmt = conn.prepareStatement(sql);
-			//3.pstmtÀÇ parameter setting
+			//3.pstmtì˜ parameter setting
 			pstmt.setInt(1, d_index);
-			//4.DB Àü¼Û			
+			//4.DB ì „ì†¡			
 			res = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -210,7 +210,7 @@ public class DailyDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)
@@ -231,16 +231,16 @@ public class DailyDao {
 		String sql = "update daily set d_subject=?,d_content=?,d_date=now() where d_index=?";
 
 		try {
-			//1.Connection¾ò±â
+			//1.Connectionì–»ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ê¸°
 			pstmt = conn.prepareStatement(sql);
-			//3.pstmtÀÇ parameter setting
+			//3.pstmtì˜ parameter setting
 			pstmt.setString(1, vo.getD_subject());
 			pstmt.setString(2, vo.getD_content());
 			
 			pstmt.setInt(3, vo.getD_index());
-			//4.DB Àü¼Û			
+			//4.DB ì „ì†¡			
 			res = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -249,7 +249,7 @@ public class DailyDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)

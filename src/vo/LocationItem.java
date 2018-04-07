@@ -9,8 +9,8 @@ public class LocationItem implements Serializable,JSONAware{
 	String name;
 	String description;
 	String telephone;
-	String address;     //Áö¹øÁÖ¼Ò
-	String road_address;//µµ·Î¸íÁÖ¼Ò
+	String address;     //ì§€ë²ˆì£¼ì†Œ
+	String road_address;//ë„ë¡œëª…ì£¼ì†Œ
 	double longitude;
 	double latitude;
 	int    distance;

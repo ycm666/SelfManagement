@@ -10,8 +10,8 @@ import vo.MemberVo;
 
 public class MemberDao {
 
-	//Single-ton pattern : 1°³ÀÇ °´Ã¼¸¸ 
-	//                     »ı¼ºÇØ¼­ ¼­ºñ½ºÇÏÀÚ
+	//Single-ton pattern : 1ê°œì˜ ê°ì²´ë§Œ 
+	//                     ìƒì„±í•´ì„œ ì„œë¹„ìŠ¤í•˜ì
 	static MemberDao single = null;
 
 	public static MemberDao getInstance() {
@@ -37,21 +37,21 @@ public class MemberDao {
 		ResultSet rs = null;
 
 		try {
-			//1.Connection ¾ò¾î¿À±â
+			//1.Connection ì–»ì–´ì˜¤ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			pstmt = conn.prepareStatement(sql);
 
 			//2-1.pstmt parameter setting
             pstmt.setString(1, id);
-			//3.°á°úÇàÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//3.ê²°ê³¼í–‰ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				//1°³ÀÇ ·¹ÄÚµå¸¦ ÀúÀåÇÒ °´Ã¼
+				//1ê°œì˜ ë ˆì½”ë“œë¥¼ ì €ì¥í•  ê°ì²´
 				vo = new MemberVo();
 
-				//ÇöÀç·¹ÄÚµå(rs)ÀÇ ÇÊµå°ªÀ» ¾ò¾î¿Í¼­->VO¿¡ ³Ö´Â´Ù
+				//í˜„ì¬ë ˆì½”ë“œ(rs)ì˜ í•„ë“œê°’ì„ ì–»ì–´ì™€ì„œ->VOì— ë„£ëŠ”ë‹¤
 				vo.setM_index(rs.getInt("m_index"));
 				vo.setM_name(rs.getString("m_name"));
 				vo.setM_id(rs.getString("m_id"));
@@ -68,7 +68,7 @@ public class MemberDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)
@@ -94,11 +94,11 @@ public class MemberDao {
                      "VALUES(?,?,?,?,?,?)";
 
 		try {
-			//1.Connection¾ò±â
+			//1.Connectionì–»ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ê¸°
 			pstmt = conn.prepareStatement(sql);
-			//3.pstmtÀÇ parameter setting
+			//3.pstmtì˜ parameter setting
             pstmt.setString(1,vo.getM_id());
             pstmt.setString(2, vo.getM_pwd());
             pstmt.setString(3, vo.getM_name());
@@ -106,7 +106,7 @@ public class MemberDao {
             pstmt.setString(5, vo.getM_gender());
             pstmt.setString(6, vo.getM_age());
                         
-			//4.DB Àü¼Û			
+			//4.DB ì „ì†¡			
 			res = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -115,7 +115,7 @@ public class MemberDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)

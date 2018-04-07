@@ -26,23 +26,23 @@ public class SearchListAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ÀºÇàµ¿ µÎ»ê¾ÆÆÄÆ® : 37.483486,126.7775602
-		// ¸íÇĞ¿ª: 37.3843279,126.9356597
+		// ì€í–‰ë™ ë‘ì‚°ì•„íŒŒíŠ¸ : 37.483486,126.7775602
+		// ëª…í•™ì—­: 37.3843279,126.9356597
 		double latitude = 37.3843279;
 		double longitude= 126.9356597;
 		
-		//search.do?latitude=37.483782&longitude=126.9003409&search=¾à±¹
+		//search.do?latitude=37.483782&longitude=126.9003409&search=ì•½êµ­
 		String str_latitude = request.getParameter("latitude");
 		String str_longitude= request.getParameter("longitude");
-		//¹®ÀÚ¿­=>doubleÇüÀ¸·Î º¯È¯
+		//ë¬¸ìì—´=>doubleí˜•ìœ¼ë¡œ ë³€í™˜
 		if(str_latitude!=null)
 		   latitude = Double.parseDouble(str_latitude);
 		if(str_longitude!=null)
 		   longitude= Double.parseDouble(str_longitude);
 		
 		String search = request.getParameter("search");
-		int range = 500;// ¹İ°æ 1000m³»
-		//ÇöÀçÀ§Ä¡ÁÖº¯ÀÇ °Ë»öµÈ »óÈ£¸ñ·Ï °¡Á®¿À±â
+		int range = 500;// ë°˜ê²½ 1000më‚´
+		//í˜„ì¬ìœ„ì¹˜ì£¼ë³€ì˜ ê²€ìƒ‰ëœ ìƒí˜¸ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
 		List<LocationItem> list 
 		    = MyLocationCollector.getLocationItems(
 		    		                      search, 

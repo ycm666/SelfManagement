@@ -12,8 +12,8 @@ import vo.CategoryVo;
 
 public class CategoryDao {
 
-	//Single-ton pattern : 1°³ÀÇ °´Ã¼¸¸ 
-	//                     »ı¼ºÇØ¼­ ¼­ºñ½ºÇÏÀÚ
+	//Single-ton pattern : 1ê°œì˜ ê°ì²´ë§Œ 
+	//                     ìƒì„±í•´ì„œ ì„œë¹„ìŠ¤í•˜ì
 	static CategoryDao single = null;
 
 	public static CategoryDao getInstance() {
@@ -38,24 +38,24 @@ public class CategoryDao {
 		ResultSet rs = null;
 
 		try {
-			//1.Connection ¾ò¾î¿À±â
+			//1.Connection ì–»ì–´ì˜¤ê¸°
 			conn = DBService.getInstance().getConnection();
-			//2.¸í·ÉÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//2.ëª…ë ¹ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			pstmt = conn.prepareStatement(sql);
 
-			//3.°á°úÇàÃ³¸®°´Ã¼ ¾ò¾î¿À±â
+			//3.ê²°ê³¼í–‰ì²˜ë¦¬ê°ì²´ ì–»ì–´ì˜¤ê¸°
 			rs = pstmt.executeQuery();
-			//Ã³À½~³¡±îÁö ¹İº¹ÇØ¶ó..
+			//ì²˜ìŒ~ëê¹Œì§€ ë°˜ë³µí•´ë¼..
 			while (rs.next()) {
-				//1°³ÀÇ ·¹ÄÚµå¸¦ ÀúÀåÇÒ °´Ã¼
+				//1ê°œì˜ ë ˆì½”ë“œë¥¼ ì €ì¥í•  ê°ì²´
 				CategoryVo vo = new CategoryVo();
 
-				//ÇöÀç·¹ÄÚµå(rs)ÀÇ ÇÊµå°ªÀ» ¾ò¾î¿Í¼­->VO¿¡ ³Ö´Â´Ù
-				//vo¿¡ ³Ö±â
+				//í˜„ì¬ë ˆì½”ë“œ(rs)ì˜ í•„ë“œê°’ì„ ì–»ì–´ì™€ì„œ->VOì— ë„£ëŠ”ë‹¤
+				//voì— ë„£ê¸°
 				vo.setC_index(rs.getInt("c_index"));
 				vo.setC_name(rs.getString("c_name"));
 
-				//ArrayListÃß°¡
+				//ArrayListì¶”ê°€
 				list.add(vo);
 			}
 
@@ -65,7 +65,7 @@ public class CategoryDao {
 		} finally {
 
 			try {
-				//¿­¸° ¿ª¼øÀ¸·Î ´İ±â
+				//ì—´ë¦° ì—­ìˆœìœ¼ë¡œ ë‹«ê¸°
 				if (rs != null)
 					rs.close();
 				if (pstmt != null)

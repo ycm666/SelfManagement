@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +41,7 @@ public class TestDaumAction extends HttpServlet {
 
 		URL url = new URL(urlStr);
 		HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-		//πﬂ±ﬁπﬁ¿∫ key
+		//Î∞úÍ∏âÎ∞õÏùÄ key
 		connection.setRequestProperty("Authorization", kakaoAK); 
 		connection.setRequestProperty("Content-Type", "application/plain"); 
 		connection.connect();
