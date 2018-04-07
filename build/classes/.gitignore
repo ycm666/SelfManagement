@@ -1,2 +1,7 @@
 /action/
+/dao/
+/filter/
+/service/
+/util/
 /vo/
+/test/

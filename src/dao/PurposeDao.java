@@ -61,8 +61,7 @@ public class PurposeDao {
 				vo.setP_goal(rs.getInt("p_goal"));
 				vo.setP_now(rs.getInt("p_now"));
 				vo.setP_unit(rs.getString("p_unit"));
-
-				//ArrayList추가
+				vo.setM_index(rs.getInt("m_index"));
 				list.add(vo);
 			}
 
