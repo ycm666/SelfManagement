@@ -45,7 +45,7 @@ public class DailyDeleteAction extends HttpServlet {
 		
 		if(res==0) bSuccess = false;
 		
-		//회원가입결과를 : {'success': true} 형식으로 전송
+		//결과를 : {'success': true} 형식으로 전송
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

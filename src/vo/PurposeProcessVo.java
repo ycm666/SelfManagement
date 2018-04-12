@@ -7,7 +7,7 @@ public class PurposeProcessVo implements JSONAware{
 	@Override
 	public String toJSONString() {
 		// TODO Auto-generated method stub
-		String json_str = String.format("{'pp_index':%d,'pp_memo':'%s','pp_date':'%s','pp_value':%d,'p_index':%d",pp_index,pp_memo,pp_date,pp_value,p_index); 
+		String json_str = String.format("{'pp_index':%d,'pp_memo':'%s','pp_date':'%s','pp_value':%d,'p_index':%d}",pp_index,pp_memo,pp_date,pp_value,p_index); 
 		return json_str;
 	}
 	int pp_index;

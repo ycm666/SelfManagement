@@ -16,12 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 
 import dao.PurposeDao;
+import dao.PurposeProcessDao;
+import vo.PurposeProcessVo;
 import vo.PurposeVo;
 
 /**
  * Servlet implementation class PurposeProcessListAction
  */
-@WebServlet("/purpose_process/list/do")
+@WebServlet("/purpose_process/list.do")
 public class PurposeProcessListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,8 +37,9 @@ public class PurposeProcessListAction extends HttpServlet {
 		//외부로 받아올떄는 무조건 String 형태로 처음에는 받아옴
 		String str_p_index = request.getParameter("p_index");
 		int p_index = Integer.parseInt(str_p_index);
-		PurposeDao dao = PurposeDao.getInstance();
-		List<PurposeVo> list = dao.selectList(p_index);
+		//System.out.println("p_index=" + p_index);
+		PurposeProcessDao dao = PurposeProcessDao.getInstance();
+		List<PurposeProcessVo> list = dao.selectList(p_index);
 		
 		//ArrayList => JSONArray변환
 		String json_array = JSONArray.toJSONString(list);

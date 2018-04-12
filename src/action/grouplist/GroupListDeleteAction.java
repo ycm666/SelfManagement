@@ -35,6 +35,7 @@ public class GroupListDeleteAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		int g_index = Integer.parseInt(request.getParameter("g_index"));
 		
+		//그룹에 포함된 모든 것들 삭제
 		List<DailyVo> daily_list = DailyDao.getInstance().selectList(g_index);
 		
 		String save_dir = request.getServletContext().getRealPath("/upload/");
@@ -51,6 +52,7 @@ public class GroupListDeleteAction extends HttpServlet {
 			count++;
 		}
 		
+		//그룹삭제
 		res =  count + GroupListDao.getInstance().delete(g_index);
 		
 		
@@ -59,7 +61,7 @@ public class GroupListDeleteAction extends HttpServlet {
 		
 		if(res==0) bSuccess = false;
 		
-		//회원가입결과를 : {'success': true} 형식으로 전송
+		//결과를 : {'success': true} 형식으로 전송
 		JSONObject json = new JSONObject();
 		json.put("success", bSuccess);
 		response.setContentType("text/plain; charset=utf-8");

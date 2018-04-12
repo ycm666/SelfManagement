@@ -43,6 +43,7 @@ public class PurposeProcessDao {
 			//2.명령처리객체 얻어오기
 			pstmt = conn.prepareStatement(sql);
 
+			pstmt.setInt(1, p_index);
 			//3.결과행처리객체 얻어오기
 			rs = pstmt.executeQuery();
 			//처음~끝까지 반복해라..
