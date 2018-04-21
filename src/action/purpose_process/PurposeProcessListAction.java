@@ -34,6 +34,8 @@ public class PurposeProcessListAction extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		// purpose_process/list.do?p_index=10
+		
 		//외부로 받아올떄는 무조건 String 형태로 처음에는 받아옴
 		String str_p_index = request.getParameter("p_index");
 		int p_index = Integer.parseInt(str_p_index);

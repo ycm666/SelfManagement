@@ -31,7 +31,7 @@ public class DailyDao {
 	public List<DailyVo> selectList(int g_index) {
 
 		List<DailyVo> list = new ArrayList<DailyVo>();
-		String sql = "select * from daily where g_index=?";
+		String sql = "select * from daily where g_index=? order by d_index";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
