@@ -4,20 +4,19 @@ import org.json.simple.JSONAware;
 
 public class MemberVo  implements JSONAware{
 	int m_index;
-	String m_id,m_pwd,m_name,m_age,m_gender,m_phone_num;
+	String m_id,m_pwd,m_name,m_hint,m_phone_num;
 	
 	public MemberVo() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public MemberVo(String m_id, String m_pwd, String m_name, String m_phone_num, String m_gender, String m_age) {
+	public MemberVo(String m_id, String m_pwd, String m_name, String m_phone_num, String m_hint) {
 		super();
 		this.m_id = m_id;
 		this.m_pwd = m_pwd;
 		this.m_name = m_name;
 		this.m_phone_num = m_phone_num;
-		this.m_gender = m_gender;
-		this.m_age = m_age;
+		this.m_hint = m_hint;
 	}
 
 
@@ -53,23 +52,20 @@ public class MemberVo  implements JSONAware{
 	public void setM_name(String m_name) {
 		this.m_name = m_name;
 	}
-	public String getM_age() {
-		return m_age;
+	
+	public String getM_hint() {
+		return m_hint;
 	}
-	public void setM_age(String m_age) {
-		this.m_age = m_age;
+
+	public void setM_hint(String m_hint) {
+		this.m_hint = m_hint;
 	}
-	public String getM_gender() {
-		return m_gender;
-	}
-	public void setM_gender(String m_gender) {
-		this.m_gender = m_gender;
-	}
+
 	@Override
 	public String toJSONString() {
 		// TODO Auto-generated method stub
-		String json_str = String.format("{'m_index':%d,'m_id':'%s','m_pwd':'%s','m_name':'%s','m_phone_num':'%s','m_gender':'%s','m_age':'%s'}", 
-				                               m_index,      m_id,         m_pwd,       m_name,        m_phone_num,       m_gender,    m_age
+		String json_str = String.format("{'m_index':%d,'m_id':'%s','m_pwd':'%s','m_name':'%s','m_phone_num':'%s','m_hint':'%s'}", 
+				                               m_index,      m_id,         m_pwd,       m_name,        m_phone_num, m_hint
 				);
 		return json_str;
 	}

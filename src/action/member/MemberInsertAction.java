@@ -34,10 +34,10 @@ public class MemberInsertAction extends HttpServlet {
 		String m_pwd 		= request.getParameter("m_pwd");
 		String m_name 		= request.getParameter("m_name");
 		String m_phone_num 	= request.getParameter("m_phone_num");
-		String m_gender 	= request.getParameter("m_gender");
-		String m_age 		= request.getParameter("m_age");
+		String m_hint = request.getParameter("m_hint");
 		
-		MemberVo  vo = new MemberVo(m_id, m_pwd, m_name, m_phone_num, m_gender, m_age);
+		
+		MemberVo  vo = new MemberVo(m_id, m_pwd, m_name, m_phone_num,m_hint);
 		
 		int res = MemberDao.getInstance().insert(vo);
 		
