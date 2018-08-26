@@ -20,7 +20,7 @@ public class LocationItem implements Serializable,JSONAware{
 	public String toJSONString() {
 		// TODO Auto-generated method stub
 		String json = String.format("{'name':'%s','telephone':'%s','address':'%s','road_address':'%s'" +
-				                    "'description':'%s','distance':'%d','latitude':'%f','longitude':'%f'}", 
+				                    ",'description':'%s','distance':'%d','latitude':'%f','longitude':'%f'}", 
 				                    name,telephone,address,road_address,description,distance,latitude,longitude);
 		return json;
 	}
