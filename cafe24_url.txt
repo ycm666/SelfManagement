@@ -42,5 +42,10 @@ R : http://ycm111.cafe24.com/geo/search_list.do
                    latitude=
                    longitude=
                    search=
-           
-             
+
+##(샘플)시흥시 은행동           
+
+37.4432967,126.8011569
+
+http://ycm111.cafe24.com/geo/search_list.do?latitude=37.4432967&longitude=126.8011569&search=약국
+      
